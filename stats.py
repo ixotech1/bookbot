@@ -4,7 +4,7 @@ def get_book_text(filepath):
     
 def get_num_words(filepath):
     num_words=len(get_book_text(filepath).split())
-    return f"{num_words} words found in the document"
+    return f"Found {num_words} total words"
 
 def get_num_chars(filepath):
     res={}
@@ -13,4 +13,11 @@ def get_num_chars(filepath):
             res[x]+=1
         else:
             res[x]=1
+    return res
+
+def sorted_num_chars(char_dict):
+    res=[]
+    for key,value in char_dict.items():
+        res.append({"char":key,"num":value})
+    res.sort(reverse=True, key=lambda items: items["num"])
     return res
